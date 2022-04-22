@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CrudsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,11 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home', [
-        "title" => "Home"
-    ]);
-});
+Route::get('/', [CrudsController::class, 'indexdua'])->name('cruds.indexdua');
+
+
 
 Route::get('/about', function () {
     return view('about', [
@@ -31,4 +29,19 @@ Route::get('/gallery', function () {
     return view('gallery', [
         "title" => "Gallery"
     ]);
+});
+
+Auth::routes();
+
+
+Route::group(['middleware' => ['auth']], function (){
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [CrudsController::class, 'index'])->name('cruds.index');
+    Route::resource('/cruds', CrudsController::class);
+    Route::get('/cruds', [CrudsController::class, 'create'])->name('cruds.create');
+    Route::get('/cruds/{id}/edit', [CrudsController::class, 'edit'])->name('cruds.edit');
+    Route::post('/cruds/{id}/update', [CrudsController::class, 'update'])->name('cruds.update');
+    Route::get('/cruds/{id}/destroy', [CrudsController::class, 'destroy'])->name('cruds.destroy');
+
+
 });

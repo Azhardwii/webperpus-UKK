@@ -13,7 +13,6 @@
     <title>@yield('title')</title>
 
     @include('partials/css')
-    
 
     
 </head>
@@ -21,11 +20,11 @@
 <body class="animsition">
     <div class="page-wrapper">
         <!-- HEADER DESKTOP-->
-        @include('partials/header')
+        @include('partials/admin-header')
         <!-- END HEADER DESKTOP-->
 
         <!-- HEADER MOBILE-->
-        @include('partials/header-mobile')
+        @include('partials/admin-header-mobile')
         <!-- END HEADER MOBILE -->
 
         <!-- PAGE CONTENT-->
@@ -38,3 +37,4 @@
     @include('partials/script')
 
 </body>
+
