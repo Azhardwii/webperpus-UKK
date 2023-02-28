@@ -11,22 +11,27 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong>Form Edit</strong> Barang Laboratorium
+                                <strong>Form Edit</strong> Library Buku
                             </div>
                             <div class="card-body card-block">
-                                <form action="{{ route('cruds.update', $crud->id)}}" method="post" class="">
+                                <form action="{{ route('cruds.update', $crud->id_gambar)}}" method="post" class="" enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                     <div class="form-group">
-                                        <label for="nf-email" class=" form-control-label">Nama Barang</label>
-                                        <input type="text" name="Nama_Barang" class="form-control" value="{{ $crud->Nama_Barang}}">
+                                        <label for="nf-email" class=" form-control-label">Judul</label>
+                                        <input type="text" name="judul" class="form-control" value="{{ $crud->judul}}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="nf-email" class=" form-control-label">Jumlah</label>
-                                        <input type="text" name="Jumlah" class="form-control" value="{{ $crud->Jumlah}}">
+                                        <label for="nf-email" class=" form-control-label">Pengarang</label>
+                                        <input type="text" name="pengarang" class="form-control" value="{{ $crud->pengarang}}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="nf-password" class=" form-control-label">Kondisi dan Keterangan</label>
-                                        <textarea name="Kondisi_dan_Keterangan" class="form-control">{{ $crud->Kondisi_dan_Keterangan}}</textarea>
+                                        <label for="nf-password" class=" form-control-label">Penerbit</label>
+                                        <input type="text" name="penerbit" class="form-control" value="{{ $crud->penerbit}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nf-password" class=" form-control-label">Gambar</label>
+                                        <input type="file" name="gambar" class="form-control" placeholder="gambar" value="{{ $crud->gambar}}">
+                                        <img src="{{asset('admin/images/buku/' . $crud->gambar)}}" width="200px" alt="">
                                     </div>
                                     <div>
                                         <button type="submit" class="btn btn-primary btn-sm">

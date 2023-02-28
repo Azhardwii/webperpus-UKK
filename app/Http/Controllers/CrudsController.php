@@ -14,13 +14,13 @@ class CrudsController extends Controller
      */
     public function index()
     {
-        $cruds = Crud::all();
+        $cruds = Crud::paginate(10);
         return view('admin/home', compact('cruds'));
     }
 
     public function indexdua()
     {
-        $cruds = Crud::all();
+        $cruds = Crud::paginate(10);
         return view('index', compact('cruds'));
     }
 
@@ -47,9 +47,20 @@ class CrudsController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        $crud = Crud::create($request->all());
-        $crud->save();
+        $crud_validasi = $request->validate([
+            'judul'=>'required',
+            'pengarang'=>'required',
+            'penerbit'=>'required',
+            'gambar'=>'required|max:2048',
+        ]);
 
+        $gambar = $request->gambar;
+        $nama_file = time().rand(100,999).'.'.$gambar->getClientOriginalName();
+        if($request->file('gambar')){
+            $crud_validasi['gambar'] = $nama_file;
+            $request->file('gambar')->move('admin/images/buku/',$nama_file);
+        }
+        Crud::create($crud_validasi);
         return redirect('home');
     }
 
@@ -59,9 +70,28 @@ class CrudsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $cari = $request->cari;
+ 
+    		// mengambil data dari table pegawai sesuai pencarian data
+		$cruds = Crud::where('judul','like',"%".$cari."%")
+		->paginate(10);
+ 
+    		// mengirim data pegawai ke view index
+		return view('admin/show',['cruds' => $cruds]);
+    }
+
+    public function cari(Request $request)
+    {
+        $cari = $request->cari;
+ 
+    		// mengambil data dari table pegawai sesuai pencarian data
+		$cruds = Crud::where('judul','like',"%".$cari."%")
+		->paginate(10);
+ 
+    		// mengirim data pegawai ke view index
+		return view('cari',['cruds' => $cruds]);
     }
 
     /**
@@ -86,7 +116,23 @@ class CrudsController extends Controller
     public function update(Request $request, $id)
     {
         $crud = Crud::findOrFail($id);
-        $crud->update($request->all());
+        $crud_validasi = $request->validate([
+            'judul' => 'required',
+            'pengarang' => 'required',
+            'penerbit' => 'required',
+            'gambar'=>'required|max:2048',
+        ]);
+  
+        $gambar = $request->gambar;
+        $nama_file = time().rand(100,999).'.'.$gambar->getClientOriginalName();
+        if($request->file('gambar')){
+            $crud_validasi['gambar'] = $nama_file;
+            $request->file('gambar')->move('admin/images/buku/',$nama_file);
+        }else{
+            unset($crud_validasi['gambar']);
+        }
+        
+        $crud->update($crud_validasi);
         $crud->save();
 
         return redirect()->route('cruds.index');

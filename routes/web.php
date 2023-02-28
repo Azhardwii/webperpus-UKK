@@ -14,7 +14,7 @@ use App\Http\Controllers\CrudsController;
 */
 
 Route::get('/', [CrudsController::class, 'indexdua'])->name('cruds.indexdua');
-
+Route::get('/cari',[CrudsController::class, 'cari'])->name('cruds.cari');
 
 
 Route::get('/about', function () {
@@ -39,6 +39,7 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('/home', [CrudsController::class, 'index'])->name('cruds.index');
     Route::resource('/cruds', CrudsController::class);
     Route::get('/cruds', [CrudsController::class, 'create'])->name('cruds.create');
+    Route::get('/cruds/show',[CrudsController::class, 'show'])->name('cruds.show');
     Route::get('/cruds/{id}/edit', [CrudsController::class, 'edit'])->name('cruds.edit');
     Route::post('/cruds/{id}/update', [CrudsController::class, 'update'])->name('cruds.update');
     Route::get('/cruds/{id}/destroy', [CrudsController::class, 'destroy'])->name('cruds.destroy');

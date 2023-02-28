@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Crud extends Model
 {
-    protected $table = 'cruds';
-    protected $primaryKey = 'id';
-    protected $fillable = ['id', 'Nama_Barang', 'Jumlah', 'Kondisi_dan_Keterangan'];
+    protected $table = 'bukulibrary';
+    protected $primaryKey = 'id_gambar';
+    protected $fillable = ['judul', 'pengarang', 'penerbit', 'gambar'];
 }
