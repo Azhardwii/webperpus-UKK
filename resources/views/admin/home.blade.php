@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'AlbertJonathan | Dashboard')
+@section('title', 'Azhar | Dashboard')
 @section('content')
 <!-- PAGE CONTENT-->
 <div class="page-content--bgf7">
@@ -54,6 +54,9 @@
                                             <button href="#" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                                 <a class="zmdi zmdi-delete" href="{{ route('cruds.destroy', $crud->id_gambar)}}"></a>
                                             </button>
+                                            <button href="#" class="item" data-toggle="tooltip" data-placement="top" title="Detail">
+                                                <a class="zmdi zmdi-eye" href="{{ route('cruds.detail', $crud->id_gambar)}}"></a>
+                                            </button>
                                         </div>
                                     </td>
                                     <tr class="spacer"></tr>
@@ -83,5 +86,9 @@
     </section>
     <!-- END COPYRIGHT-->
 </div>
+
+<script>
+    
+</script>
 @endsection
 

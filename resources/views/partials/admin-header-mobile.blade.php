@@ -2,9 +2,9 @@
     <div class="header-mobile__bar">
         <div class="container-fluid">
             <div class="header-mobile-inner">
-                <a class="logo" href="index.html">
+                {{-- <a class="logo" href="index.html">
                     <img src="{{asset('admin/images/icon/logo-white.png')}}" alt="CoolAdmin" />
-                </a>
+                </a> --}}
                 
             </div>
         </div>

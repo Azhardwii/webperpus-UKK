@@ -51,7 +51,7 @@ class CrudsController extends Controller
             'judul'=>'required',
             'pengarang'=>'required',
             'penerbit'=>'required',
-            'gambar'=>'required|max:2048',
+            'gambar'=>'required|max:15360',
         ]);
 
         $gambar = $request->gambar;
@@ -104,6 +104,18 @@ class CrudsController extends Controller
     {
         $crud = Crud::findOrFail($id); 
         return view('admin/edit', compact('crud'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function detail($id)
+    {
+        $crud = Crud::findOrFail($id); 
+        return view('admin/detail', compact('crud'));
     }
 
     /**

@@ -41,8 +41,7 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('/cruds', [CrudsController::class, 'create'])->name('cruds.create');
     Route::get('/cruds/show',[CrudsController::class, 'show'])->name('cruds.show');
     Route::get('/cruds/{id}/edit', [CrudsController::class, 'edit'])->name('cruds.edit');
+    Route::get('/cruds/{id}/detail', [CrudsController::class, 'detail'])->name('cruds.detail');
     Route::post('/cruds/{id}/update', [CrudsController::class, 'update'])->name('cruds.update');
     Route::get('/cruds/{id}/destroy', [CrudsController::class, 'destroy'])->name('cruds.destroy');
-
-
 });

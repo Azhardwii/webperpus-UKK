@@ -2,7 +2,7 @@
     <div class="section__content section__content--p35">
         <div class="header3-wrap">
             <div class="header__logo">
-                <img src="{{asset('admin/images/icon/logo-white.png')}}" alt="CoolAdmin" />
+                {{-- <img src="{{asset('admin/images/icon/logo-white.png')}}" alt="CoolAdmin" /> --}}
             </div>
             <div class="header__navbar">
                 <ul class="list-unstyled">

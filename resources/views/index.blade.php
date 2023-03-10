@@ -13,9 +13,9 @@
                     <div class="table-data__tool">
 
 
-                        <button class="">
+                        {{-- <button class="">
                             <a href="{{ route('login')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">add buku</a>
-                        </button>
+                        </button> --}}
 
                         <form class="au-form-icon--sm" action="/cari" method="GET">
                             <input class="au-input--w300 au-input--style2" type="text" name="cari" placeholder="Search for buku" value="{{ old('cari')}}">
@@ -47,7 +47,7 @@
                                         <td style="text-align: center; vertical-align: middle;">{{ $crud->judul }}</td>
                                         <td style="text-align: center; vertical-align: middle;">{{ $crud->pengarang }}</td>
                                         <td style="text-align: center; vertical-align: middle;">{{ $crud->penerbit}}</td>
-                                    <td>
+                                    {{-- <td>
                                         <div class="table-data-feature">
                                             <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                                 <a class="zmdi zmdi-edit" href="{{ route('login')}}"></a>
@@ -56,7 +56,7 @@
                                                 <a class="zmdi zmdi-delete" href="{{ route('login')}}"></a>
                                             </button>
                                         </div>
-                                    </td>
+                                    </td> --}}
                                     <tr class="spacer"></tr>
                                 </tr>
                                  @endforeach

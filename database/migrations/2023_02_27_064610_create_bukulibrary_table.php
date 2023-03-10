@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('bukulibrary', function (Blueprint $table) {
-            $table->bigInteger('id_gambar')->unique()->primary();
+            // $table->bigInteger('id_gambar')->unique()->primary;
+            $table->bigIncrements('id_gambar')->unique();
             $table->string('judul');
             $table->string('pengarang');
             $table->string('penerbit');
